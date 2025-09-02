@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Portal - QuickCure</title>
+    <link rel="stylesheet" href="doctor.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="auth.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="QuickCureLogo.jpg" alt="QuickCure" class="logo-img">
+                <h1>QuickCure</h1>
+            </div>
+            <nav class="nav">
+                <a href="#dashboard">Dashboard</a>
+                <a href="#schedule">Schedule</a>
+                <a href="#patients">Patients</a>
+                <a href="#earnings">Earnings</a>
+                <a href="#profile">Profile</a>
+                <a href="index.html" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#dashboard">Dashboard</a>
+            <a href="#schedule">Schedule</a>
+            <a href="#patients">Patients</a>
+            <a href="#earnings">Earnings</a>
+            <a href="#profile">Profile</a>
+            <a href="index.html">Logout</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="doctor-dashboard">
+        <!-- Welcome Section -->
+        <section class="welcome-section" id="dashboard">
+            <div class="container">
+                <div class="welcome-header">
+                    <div class="welcome-text">
+                        <h1>Welcome, <span class="doctor-name">Dr. Rajesh Sharma</span>!</h1>
+                        <p>Manage your practice and connect with patients</p>
+                    </div>
+                    <div class="doctor-avatar">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                </div>
+                
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <i class="fas fa-calendar-check"></i>
+                        <h3 id="todayAppointments">8</h3>
+                        <p>Today's Appointments</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-users"></i>
+                        <h3 id="totalPatients">245</h3>
+                        <p>Total Patients</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-rupee-sign"></i>
+                        <h3 id="monthlyEarnings">₹45,000</h3>
+                        <p>This Month</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-star"></i>
+                        <h3 id="rating">4.8</h3>
+                        <p>Rating</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Schedule Section -->
+        <section class="schedule-section" id="schedule">
+            <div class="container">
+                <div class="section-header">
+                    <h2><i class="fas fa-calendar-alt"></i> Your Schedule</h2>
+                    <div class="schedule-controls">
+                        <input type="date" id="scheduleDate" class="date-picker">
+                        <button class="btn btn-primary" onclick="showAvailabilityModal()">
+                            <i class="fas fa-clock"></i> Set Availability
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="schedule-view">
+                    <div class="time-slots" id="timeSlots">
+                        <!-- Time slots will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Patients Section -->
+        <section class="patients-section" id="patients">
+            <div class="container">
+                <div class="section-header">
+                    <h2><i class="fas fa-users"></i> Patient Management</h2>
+                    <div class="search-filters">
+                        <input type="text" id="patientSearch" placeholder="Search patients...">
+                        <select id="patientFilter">
+                            <option value="">All Patients</option>
+                            <option value="recent">Recent</option>
+                            <option value="upcoming">Upcoming</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="table-container">
+                    <table id="patientsTable">
+                        <thead>
+                            <tr>
+                                <th>Patient Name</th>
+                                <th>Last Visit</th>
+                                <th>Next Appointment</th>
+                                <th>Condition</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Earnings Section -->
+        <section class="earnings-section" id="earnings">
+            <div class="container">
+                <div class="section-header">
+                    <h2><i class="fas fa-chart-line"></i> Earnings Overview</h2>
+                    <select id="earningsPeriod">
+                        <option value="month">This Month</option>
+                        <option value="quarter">This Quarter</option>
+                        <option value="year">This Year</option>
+                    </select>
+                </div>
+                
+                <div class="earnings-grid">
+                    <div class="earnings-card">
+                        <h3>Total Consultations</h3>
+                        <p class="earnings-number">127</p>
+                        <span class="earnings-change positive">+12% from last month</span>
+                    </div>
+                    <div class="earnings-card">
+                        <h3>Total Earnings</h3>
+                        <p class="earnings-number">₹63,500</p>
+                        <span class="earnings-change positive">+8% from last month</span>
+                    </div>
+                    <div class="earnings-card">
+                        <h3>Average Fee</h3>
+                        <p class="earnings-number">₹500</p>
+                        <span class="earnings-change neutral">Same as last month</span>
+                    </div>
+                </div>
+
+                <div class="recent-payments">
+                    <h3>Recent Payments</h3>
+                    <div class="payments-list" id="paymentsList">
+                        <!-- Recent payments will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Availability Modal -->
+    <div class="modal" id="availabilityModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Set Availability</h3>
+                <button class="close-btn" onclick="closeAvailabilityModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="availabilityForm">
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input type="date" id="availabilityDate" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Start Time</label>
+                            <select id="startTime" required>
+                                <option value="09:00">09:00 AM</option>
+                                <option value="10:00">10:00 AM</option>
+                                <option value="11:00">11:00 AM</option>
+                                <option value="14:00">02:00 PM</option>
+                                <option value="15:00">03:00 PM</option>
+                                <option value="16:00">04:00 PM</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>End Time</label>
+                            <select id="endTime" required>
+                                <option value="12:00">12:00 PM</option>
+                                <option value="13:00">01:00 PM</option>
+                                <option value="17:00">05:00 PM</option>
+                                <option value="18:00">06:00 PM</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Slot Duration (minutes)</label>
+                        <select id="slotDuration" required>
+                            <option value="15">15 minutes</option>
+                            <option value="30" selected>30 minutes</option>
+                            <option value="60">60 minutes</option>
+                        </select>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" class="btn btn-secondary" onclick="closeAvailabilityModal()">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Availability</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="doctor.js"></script>
+</body>
+</html>

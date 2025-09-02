@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Management - QuickCare Admin</title>
+    <link rel="stylesheet" href="admin-hospital.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="admin-header">
+        <div class="header-content">
+            <div class="logo-section">
+                <i class="fas fa-heartbeat logo-icon"></i>
+                <h1>QuickCare Admin</h1>
+            </div>
+            <nav class="header-nav">
+                <a href="admin.html" class="nav-link">
+                    <i class="fas fa-home"></i> Dashboard
+                </a>
+                <a href="admin-doctor.html" class="nav-link">
+                    <i class="fas fa-user-md"></i> Doctors
+                </a>
+                <button id="logoutBtn" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="container">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="page-title">
+                <i class="fas fa-hospital-alt page-icon"></i>
+                <div>
+                    <h1>Hospital Management</h1>
+                    <p>Add, view, and manage hospitals in the system</p>
+                </div>
+            </div>
+            <div class="page-stats">
+                <div class="quick-stat">
+                    <span class="stat-number" id="totalHospitals">0</span>
+                    <span class="stat-label">Total Hospitals</span>
+                </div>
+                <div class="quick-stat">
+                    <span class="stat-number" id="verifiedHospitals">0</span>
+                    <span class="stat-label">Verified</span>
+                </div>
+                <div class="quick-stat">
+                    <span class="stat-number" id="pendingHospitals">0</span>
+                    <span class="stat-label">Pending</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hospital Form Section -->
+        <section class="hospital-management-section">
+            <h2><i class="fas fa-plus-circle"></i> Add New Hospital</h2>
+            
+            <!-- Success/Error Messages -->
+            <div id="messageContainer"></div>
+            
+            <form class="hospital-form" id="addHospitalForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="hospitalName">Hospital Name *</label>
+                        <input type="text" id="hospitalName" name="hospitalName" placeholder="Enter hospital name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="hospitalType">Hospital Type *</label>
+                        <select id="hospitalType" name="hospitalType" required>
+                            <option value="">-- Select Type --</option>
+                            <option value="Government">Government Hospital</option>
+                            <option value="Private">Private Hospital</option>
+                            <option value="Specialty">Specialty Clinic</option>
+                            <option value="Multi-specialty">Multi-specialty Hospital</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="hospitalCity">City *</label>
+                        <select id="hospitalCity" name="hospitalCity" required>
+                            <option value="">-- Choose City --</option>
+                            <option value="delhi">Delhi</option>
+                            <option value="mumbai">Mumbai</option>
+                            <option value="bengaluru">Bengaluru</option>
+                            <option value="kolkata">Kolkata</option>
+                            <option value="chennai">Chennai</option>
+                            <option value="hyderabad">Hyderabad</option>
+                            <option value="pune">Pune</option>
+                            <option value="lucknow">Lucknow</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hospitalVerified">Verification Status *</label>
+                        <select id="hospitalVerified" name="hospitalVerified" required>
+                            <option value="">-- Select Status --</option>
+                            <option value="true">Verified ✅</option>
+                            <option value="false">Pending Verification ⏳</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="hospitalAddress">Address</label>
+                        <input type="text" id="hospitalAddress" name="hospitalAddress" placeholder="Enter hospital address">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hospitalPhone">Phone Number</label>
+                        <input type="tel" id="hospitalPhone" name="hospitalPhone" placeholder="Enter phone number">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="hospitalEmail">Email Address</label>
+                        <input type="email" id="hospitalEmail" name="hospitalEmail" placeholder="hospital@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hospitalCapacity">Bed Capacity</label>
+                        <input type="number" id="hospitalCapacity" name="hospitalCapacity" min="1" placeholder="Number of beds">
+                    </div>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="hospitalDescription">Description</label>
+                    <textarea id="hospitalDescription" name="hospitalDescription" rows="3" placeholder="Brief description about the hospital"></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn clear">Clear Form</button>
+                    <button type="submit" class="btn add">Add Hospital</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Hospitals List Section -->
+        <section class="hospital-management-section">
+            <div class="section-header">
+                <h2><i class="fas fa-list-ul"></i> Existing Hospitals</h2>
+                <div class="section-actions">
+                    <div class="search-filter">
+                        <input type="text" id="hospitalSearch" class="search-input" placeholder="Search hospitals...">
+                        <select id="filterType" class="filter-select">
+                            <option value="">All Types</option>
+                            <option value="Government">Government</option>
+                            <option value="Private">Private</option>
+                            <option value="Specialty">Specialty</option>
+                            <option value="Multi-specialty">Multi-specialty</option>
+                        </select>
+                        <select id="filterVerification" class="filter-select">
+                            <option value="">All Status</option>
+                            <option value="true">Verified</option>
+                            <option value="false">Pending</option>
+                        </select>
+                        <select id="filterCity" class="filter-select">
+                            <option value="">All Cities</option>
+                            <option value="delhi">Delhi</option>
+                            <option value="mumbai">Mumbai</option>
+                            <option value="bengaluru">Bengaluru</option>
+                            <option value="kolkata">Kolkata</option>
+                            <option value="chennai">Chennai</option>
+                            <option value="hyderabad">Hyderabad</option>
+                            <option value="pune">Pune</option>
+                            <option value="lucknow">Lucknow</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table id="hospitalManagementTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>City</th>
+                            <th>Capacity</th>
+                            <th>Contact</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="hospitalListBody">
+                        <!-- Data populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- Scripts -->
+    <script src="admin-auth.js"></script>
+    <script src="admin-hospital.js"></script>
+</body>
+</html>

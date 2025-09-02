@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickCure - Healthcare Portal</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="auth.js"></script>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="QuickCureLogo.png" alt="QuickCure Logo" class="logo-img">
+                <h1>QuickCure</h1>
+            </div>
+            <nav class="nav">
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <a href="signin.html" class="btn sign-in">Sign In</a>
+                    <a href="admin-signin.html" class="btn admin-login">Admin Login</a>
+                </div>
+            </nav>
+            <button id="menu-toggle" class="menu-toggle" aria-label="Toggle navigation">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu">
+            <a href="#features">Features</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+            <a href="signin.html">Sign In</a>
+            <a href="admin-signin.html">Admin Login</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>Your Health, Our <span class="highlight">Priority</span></h1>
+                        <p>Connect with the best doctors and hospitals. Book appointments instantly and get quality healthcare at your fingertips.</p>
+                        <div class="hero-buttons">
+                            <a href="#features" class="btn btn-primary">Explore Features</a>
+                            <a href="signin.html" class="btn btn-secondary">Get Started</a>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <img src="QuickCureHomeImg.png" alt="Healthcare Services" class="main-image">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Choose Your Portal</h2>
+                    <p>Access the right tools for your healthcare needs</p>
+                </div>
+                
+                <div class="features-grid">
+                    <!-- Patient Portal -->
+                    <div class="feature-card patient-card">
+                        <div class="card-icon">
+                            <i class="fas fa-user-injured"></i>
+                        </div>
+                        <h3>Patient Portal</h3>
+                        <p>Find hospitals ranked by earliest appointment availability, read reviews, and book your consultation in just one click.</p>
+                        <a href="javascript:checkPatientAccess()" class="btn btn-primary btn-block">Access Patient Portal</a>
+                    </div>
+                    
+                    <!-- Doctor Portal -->
+                    <div class="feature-card doctor-card">
+                        <div class="card-icon">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <h3>Doctor Portal</h3>
+                        <p>Manage your appointment slots, track your schedule, view patient history, and monitor your earnings seamlessly.</p>
+                        <a href="javascript:checkDoctorAccess()" class="btn btn-primary btn-block">Access Doctor Portal</a>
+                    </div>
+                </div>
+                
+                <!-- Additional Services -->
+                <div class="services-grid">
+                    <div class="service-item">
+                        <i class="fas fa-hospital"></i>
+                        <h4>Find Hospitals</h4>
+                        <p>Search top-rated hospitals near you</p>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-pills"></i>
+                        <h4>Prescription Management</h4>
+                        <p>Manage your medications digitally</p>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-notes-medical"></i>
+                        <h4>Health Records</h4>
+                        <p>Secure access to your medical history</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <h2>About QuickCure</h2>
+                <p>Your trusted partner in healthcare connecting patients and providers seamlessly. We believe in putting patients first and making healthcare accessible to everyone.</p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>support@quickcure.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <p>+91 800 QUI-CURE</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Healthcare District, Medical City</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 QuickCure. All rights reserved. | Putting patients first.</p>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>

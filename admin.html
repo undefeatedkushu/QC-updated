@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickCare Admin Dashboard</title>
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header with gradient background -->
+    <header class="admin-header">
+        <div class="header-content">
+            <div class="logo-section">
+                <i class="fas fa-heartbeat logo-icon"></i>
+                <h1>QuickCare Admin</h1>
+            </div>
+            <nav class="header-nav">
+                <button id="logoutBtn" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Welcome Section -->
+        <section class="welcome-section">
+            <div class="welcome-content">
+                <h2>Welcome back, Administrator</h2>
+                <p class="tagline">Manage your healthcare platform with ease</p>
+            </div>
+            <div class="welcome-illustration">
+                <i class="fas fa-hospital-alt"></i>
+            </div>
+        </section>
+
+        <!-- Dashboard Stats with enhanced cards -->
+        <section class="dashboard-stats">
+            <div class="stat-card hospitals-card">
+                <div class="stat-icon">
+                    <i class="fas fa-hospital"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>Total Hospitals</h3>
+                    <p id="hospitalCount" class="stat-number">0</p>
+                    <span class="stat-trend">
+                        <i class="fas fa-arrow-up"></i>
+                        +12% from last month
+                    </span>
+                </div>
+            </div>
+
+            <div class="stat-card doctors-card">
+                <div class="stat-icon">
+                    <i class="fas fa-user-md"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>Doctors Verified</h3>
+                    <p id="doctorCount" class="stat-number">0</p>
+                    <span class="stat-trend">
+                        <i class="fas fa-arrow-up"></i>
+                        +8% from last month
+                    </span>
+                </div>
+            </div>
+
+            <div class="stat-card appointments-card">
+                <div class="stat-icon">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>Appointments Today</h3>
+                    <p id="appointmentsToday" class="stat-number">0</p>
+                    <span class="stat-trend">
+                        <i class="fas fa-arrow-up"></i>
+                        +5% from yesterday
+                    </span>
+                </div>
+            </div>
+
+            <div class="stat-card users-card">
+                <div class="stat-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>Total Users</h3>
+                    <p id="totalUsers" class="stat-number">0</p>
+                    <span class="stat-trend">
+                        <i class="fas fa-arrow-up"></i>
+                        +15% from last month
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enhanced Management Panels -->
+        <section class="management-panels">
+            <div class="panel hospital-panel">
+                <div class="panel-header">
+                    <i class="fas fa-hospital-alt panel-icon"></i>
+                    <h3>Hospital Verification</h3>
+                </div>
+                <p>Review and approve hospital registrations with comprehensive verification process.</p>
+                <a href="admin-hospital.html" class="panel-btn">
+                    <span>Verify Hospitals</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="panel doctor-panel">
+                <div class="panel-header">
+                    <i class="fas fa-stethoscope panel-icon"></i>
+                    <h3>Doctor Management</h3>
+                </div>
+                <p>View doctors, verify credentials, and manage schedules efficiently.</p>
+                <a href="admin-doctor.html" class="panel-btn">
+                    <span>Manage Doctors</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="panel monitoring-panel">
+                <div class="panel-header">
+                    <i class="fas fa-chart-line panel-icon"></i>
+                    <h3>System Monitoring</h3>
+                </div>
+                <p>Track platform usage, resolve issues, and monitor system activity.</p>
+                <a href="#" class="panel-btn">
+                    <span>View Analytics</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- Enhanced Data Tables -->
+        <section class="admin-tables">
+            <div class="table-container">
+                <div class="table-header">
+                    <h2><i class="fas fa-hospital"></i> Recent Hospitals</h2>
+                    <a href="admin-hospital.html" class="view-all-btn">View All</a>
+                </div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>City</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="hospitalTable">
+                            <!-- Data populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <div class="table-header">
+                    <h2><i class="fas fa-user-md"></i> Recent Doctors</h2>
+                    <a href="admin-doctor.html" class="view-all-btn">View All</a>
+                </div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Specialty</th>
+                                <th>Hospital</th>
+                                <th>Fees</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="doctorTable">
+                            <!-- Data populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <div class="table-header">
+                    <h2><i class="fas fa-calendar-alt"></i> Recent Appointments</h2>
+                    <a href="#" class="view-all-btn">View All</a>
+                </div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Patient</th>
+                                <th>Doctor</th>
+                                <th>Hospital</th>
+                                <th>Fees</th>
+                            </tr>
+                        </thead>
+                        <tbody id="appointmentTable">
+                            <!-- Data populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="admin-auth.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
